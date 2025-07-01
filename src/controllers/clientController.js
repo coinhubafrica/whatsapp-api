@@ -73,13 +73,13 @@ const sendMessage = async (req, res) => {
     let messageOut
     switch (contentType) {
       case 'string':
-        if (options?.media) {
-          const media = options.media
-          media.filename = null
-          media.filesize = null
-          options.media = new MessageMedia(media.mimetype, media.data, media.filename, media.filesize)
-        }
-        messageOut = await client.sendMessage(chatId, content, options)
+        // if (options?.media) {
+        //   const media = options.media
+        //   media.filename = null
+        //   media.filesize = null
+        //   options.media = new MessageMedia(media.mimetype, media.data, media.filename, media.filesize)
+        // }
+        messageOut = await client.sendMessage(chatId, content)
         break
       case 'MessageMediaFromURL': {
         const messageMediaFromURL = await MessageMedia.fromUrl(content, { unsafeMime: true })
